@@ -1,0 +1,70 @@
+section{
+  width: fit-content;
+}
+/* white circle in icons */
+.circle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color:#1ab394;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.link{
+  cursor: pointer;
+}
+.eye{
+  background-color: transparent;
+  border: none;
+}
+a{
+  color: darkgoldenrod;
+}
+.form-check-input:checked {
+  background-color: darkgoldenrod;
+  outline: none;
+  border: none;
+}
+i{
+  color: darkgoldenrod;
+}
+mat-error{
+  display: flex;
+}
+
+.modal-content{
+  background-color: rgba(21, 21, 21, 0.9);
+  border: 2px solid #1ab394;
+}
+.name,.login-with{
+  color: #1ab394 !important;
+}
+.photo{
+  border: 6px solid #1ab394;
+}
+.h-custom{
+      margin: 0;
+}
+
+.passwordConfirm{
+width: 200px;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"]{
+  border: none;
+  border-bottom: 2px solid orange;
+  width: 50%;
+  outline: none;
+}
+
+.sign-btn {
+display: flex;
+margin: auto;
+}
+.register-form{
+font-size: 12px;
+}

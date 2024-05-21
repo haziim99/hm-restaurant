@@ -1,0 +1,16 @@
+<div class="color" style="color: rgb(24, 92, 92);scroll-behavior: smooth;">
+  <app-header></app-header>
+  <div>
+    <router-outlet style="padding-top: 40px;"></router-outlet>
+    <button class="btn btn-warning scroll-to-top-btn" style="background-color: whitesmoke;" [class.hidden]="!showScrollButton" (click)="scrollToTop()">
+<i class="fa-solid fa-angles-up"></i>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</button>
+  </div>
+  <app-footer></app-footer>
+</div>

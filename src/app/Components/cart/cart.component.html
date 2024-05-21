@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <ng-container *ngIf="foods.length > 0; else emptyCart">
+      <div class="row">
+        <!-- cart -->
+        <div class="col-sm-12 col-md-12 col-lg-8 mt-5">
+          <div class="ibox mt-5">
+            <!-- length cart -->
+            <div class="ibox-title mt-5">
+              <h3 class="pull-right">({{ foods.length }}) Artikel</h3>
+              <hr>
+            </div>
+            <!-- cart details -->
+            <div class="ibox-content">
+              <div class="row ">
+                <div class=" text-center text-warning foods " >
+                  <h3 class="fw-bold">Produktbild</h3>
+                  <div class=" text-center mb-3 mt-3" *ngFor="let food of foods  | paginate: { itemsPerPage: 3, currentPage: currentPage };">
+                    <img class="card-img-top" [src]="'../../../assets/' + food.imageURL" alt="{{food.name}}">
+                  </div>
+                </div>
+                <div class=" text-center text-warning  foods">
+                  <h3 class="fw-bold">Produktname</h3>
+                  <div class=" text-center mb-3 mt-3" *ngFor="let food of foods  | paginate: { itemsPerPage: 3, currentPage: currentPage };">
+                    <h3 class="text-navy text-warning">{{ food.name }}</h3>
+                    <div class="trash">
+                      <button class="btn btn-white" (click)="removeFromCart(food)">
+                        <i class="fa fa-trash" style="color: orangered;"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class=" text-center text-warning foods">
+                  <h3 class="fw-bold">Menge</h3>
+                  <div class=" text-center mb-3 mt-3"  *ngFor="let food of foods  | paginate: { itemsPerPage: 3, currentPage: currentPage };">
+                    <div class="d-flex quantity justify-content-center align-items-center" >
+                      <button class="btn btn-link mx-2" (click)="decreaseQuantity(food)">
+                        <i class="fas fa-minus text-white"></i>
+                      </button>
+                      <input type="text" [(ngModel)]="food.quantity" #quantityInput (input)="onInput($event)" (ngModelChange)="updateFoodInLocalStorage(food)" class="text-center qty text-warning">
+                      <button class="btn btn-link mx-2" (click)="increaseQuantity(food)">
+                        <i class="fas fa-plus text-white"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class=" text-center text-warning foods fw-bold">
+                  <h3 class="fw-bold">Preis</h3>
+                  <div class=" text-center mb-3 mt-3"  *ngFor="let food of foods  | paginate: { itemsPerPage: 3, currentPage: currentPage };">
+                    <h4 class="text-navy text-warning">{{ calculateProductPrice(food) | currency }}</h4>
+                  </div>
+                </div>
+                <pagination-controls (pageChange)="currentPage = $event"[class.custom-pagination-controls]="true"></pagination-controls>
+                <div class="form-group mt-3">
+                  <h3>Hinweise zu Ihrer Bestellung: </h3>
+                  <form [formGroup]="messageForm">
+                    <textarea formControlName="msg"
+                      class="bg-transparent text-white" name="message" rows="8" placeholder="Your Message"></textarea>
+                    <button type="button"class="btn btn-success save" (click)="save()"
+                    [disabled]="messageForm.invalid">Save</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- button continue -->
+            <div class="ibox-content">
+              <button class="btn btn-outline-warning" (click)="continue()"><i class="fa fa-arrow-left"></i> Mit dem Einkaufen fortfahren</button>
+            </div>
+          </div>
+        </div>
+        <!-- summary -->
+        <div class="col-sm-6 col-md-12 col-lg-4 mt-5">
+          <div class="ibox mt-5">
+            <div class="ibox-title mt-5">
+              <h3 class="pull-right">Warenkorb Zusammenfassung</h3>
+              <hr>
+            </div>
+            <div class="ibox-content">
+              <div class="summary">
+                <h3>Zusammenfassung</h3>
+                <!-- <hr> -->
+                <div class="summary-item"><span class="text-warning">Zwischensumme</span><span class="price">{{ calculateTotalPrice() | currency }}</span></div>
+                <div class="summary-item"><span class="text-warning">Rabatt</span><span class="price">€0</span></div>
+                <div class="summary-item"><span class="text-warning">Lieferung</span><span class="price">{{ 5 | currency }}</span></div>
+                <hr>
+                <div class="summary-item" style="font-weight: bold">
+                  <span class="text fw-bold text-warning">Gesamt</span>
+                  <span class="price text-warning">{{ totalCartItems + 5 | currency }}</span>
+                </div>
+                <button type="button" class="btn btn-outline-warning btn-lg btn-block w-30" (click)="checkout()">Kasse</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<ng-template #emptyCart>
+  <div class="container-fluid d-flex justify-content-center align-items-center " style="height: 100vh;">
+    <div class="wrapper wrapper-content animated fadeInRight" style="padding: 40px;">
+      <div class="row">
+        <div class="col-12 text-center text-success">
+          <h1>Ihr Warenkorb ist leer</h1>
+          <button class="btn btn-outline-success mt-5" (click)="continue()"><i class="fa fa-arrow-left"></i> Einkaufen gehen </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

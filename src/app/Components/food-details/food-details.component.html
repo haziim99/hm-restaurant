@@ -1,0 +1,67 @@
+<section style="background-color: darkslategray;">
+  <div class="container py-5 ">
+    <div class="row justify-content-center">
+      <nav class="mt-4" aria-label="breadcrumb">
+        <ol class="breadcrumb mt-3 text-white">
+          <li class="breadcrumb-item text-warning"><a routerLink="/home">Home</a></li>
+          <li class="breadcrumb-item active text-light" aria-current="page">Details zum Essen</li>
+        </ol>
+      </nav>
+      <div class="col-8 mt-3">
+        <div class="details mt-3">
+          <div class="row">
+
+            <div class="bg-image hover-overlay ripple ripple-surface ripple-surface-light col-6"
+            data-mdb-ripple-color="light">
+            <img [src]="'./../../../assets/'+food.imageURL" alt="{{food.name}}"
+            style="border-top-left-radius: 15px; border-top-right-radius: 15px;" class="img-fluid"/>
+            <div class="d-flex justify-content-between">
+              <div>
+                <h3 class="text-light">{{food.name}}</h3>
+                <div class="star mt-1 mb-4 text-light">
+                  <ng-container *ngFor="let star of getStarsArray(food.stars)">
+                    <i class="fa fa-star" [ngClass]="{'half-star': star === 0.5}"></i>
+                  </ng-container> ({{food.stars}})
+                </div>
+              </div>
+              <h5><i class="fa fa-heart red-heart favorite" [ngClass]="{'fas': food.favorite, 'far': !food.favorite}"(click)="toggleLike(food)"></i></h5>
+            </div>
+
+          </div>
+          <div class ="food-details col-6">
+            <div class="pb-0">
+              <div class="">
+                  <h2 class="text-warning">{{food.price | currency}}</h2>
+                  <h4 class="text-light">{{food.description}}</h4>
+                  <h4 class="text-white">Es dauert {{food.cookTime}} Minuten</h4>
+                </div>
+                <div class=" col-12 ">
+                  <div class=" d-flex justify-content-between align-items-center pb-2 mb-1 text-light fw-bold">
+                    <button id="addCartBtn"
+                      class="btn btn-outline-warning "
+                      (click)="addToCart()"
+                      [disabled]="isItemInCart"
+                      >
+                      <i [hidden]="isItemInCart" class="fa-solid fa-cart-plus"></i>
+                      <span [hidden]="isItemInCart">
+                        in den Warenkorb legen
+                      </span>
+                      <span [hidden]="!isItemInCart">
+                        &#x2713; Zum Warenkorb hinzugefügt
+                      </span>
+
+
+                    </button>
+                  </div>
+                  <p *ngIf="isItemInCart" class="text-warning" style="display: block;">
+                    Artikel bereits im Warenkorb
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

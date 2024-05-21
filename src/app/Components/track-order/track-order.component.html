@@ -1,0 +1,92 @@
+<section style="background-color: #1e1f1f;">
+  <div class="container py-5 h-100 ">
+    <ng-container *ngIf="!hasOrder; else order" >
+      <div class="row d-flex justify-content-center mt-5 align-items-center h-100"style="margin: auto;">
+        <div class="col-12">
+          <h1 class="card-title text-warning">Meine Bestellung verfolgen</h1>
+          <div class="card card-stepper text-black" style="border-radius: 5px;">
+            <div class="card-body p-5 mt-3">
+
+              <div class="d-flex justify-content-between align-items-center mb-5">
+                <div>
+                  <h5 class="mb-0">RECHNUNG <span class="text-success fw-bold">#Y34XDHR</span></h5>
+                </div>
+                <div class="text-center">
+                  <table class="table table-responsive ">
+                    <thead>
+                      <tr>
+                        <th>Erwartete Ankunft</th>
+                        <th>USPS</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>01/01/24</td>
+                        <td>2340945672</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <ul id="progressbar-2" class="d-flex justify-content-between mx-0 mt-0 mb-5 px-0 pt-0 pb-2">
+                <li class="step0 active text-center" id="step1"></li>
+                <li class="step0 active text-center" id="step2"></li>
+                <li class="step0 active text-center" id="step3"></li>
+                <li class="step0 text-muted text-end" id="step4"></li>
+              </ul>
+
+              <div class="d-flex justify-content-between text-center">
+                <div class="d-lg-flex align-items-center">
+                  <i class="fas fa-clipboard-list fa-3x me-lg-4 mb-lg-0"></i>
+                  <div>
+                    <p class="fw-bold mb-1">Bestellung</p>
+                    <p class="fw-bold mb-0">Verarbeitet</p>
+                  </div>
+                </div>
+                <div class="d-lg-flex align-items-center">
+                  <i class="fas fa-box-open fa-3x me-lg-4 mb-lg-0"></i>
+                  <div>
+                    <p class="fw-bold mb-1">Bestellung</p>
+                    <p class="fw-bold mb-0">Ausgeliefert</p>
+                  </div>
+                </div>
+                <div class="d-lg-flex align-items-center">
+                  <i class="fas fa-shipping-fast fa-3x me-lg-4 mb-lg-0"></i>
+                  <div>
+                    <p class="fw-bold mb-1">Bestellung</p>
+                    <p class="fw-bold mb-0">Unterwegs</p>
+                  </div>
+                </div>
+                <div class="d-lg-flex align-items-center">
+                  <i class="fas fa-home fa-3x me-lg-4 mb-lg-0"></i>
+                  <div>
+                    <p class="fw-bold mb-1">Bestellung</p>
+                    <p class="fw-bold mb-0">Angekommen</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div (click)="cancel()" class="mt-5 btn btn-outline-danger text-center d-flex justify-content-center w-50">
+          Cancel Order
+        </div>
+      </div>
+    </ng-container>
+    <div class="no-order-container d-flex mb-5">
+      <ng-template #order>
+        <div class="data">
+          <h1 class="text-center text-warning">Keine Bestellungen</h1>
+          <p class="text-center text-white">Sie haben noch keine Bestellungen aufgegeben.</p>
+          <button routerLink="/home"
+          class="text-center btn btn-outline-warning d-flex" type="button" style="margin: auto;">
+            Machen Sie jetzt Ihre Bestellung!
+          </button>
+        </div>
+        <img src="../../../assets/Images/no-order.jpg" width="65%" class="mb-5 ">
+      </ng-template>
+    </div>
+
+  </div>
+</section>

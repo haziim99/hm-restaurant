@@ -1,0 +1,120 @@
+<!-- Credit card form -->
+<section class="container">
+  <div class="row">
+    <div class="col-10">
+      <div class="card mt-5 mb-4 bg-transparent ">
+        <div class="card-header py-3 mt-5 d-flex justify-content-between align-items-center">
+          <h2 class="text-warning">Rechnungsdetails</h2>
+          <div class="total text-outline-warning " >
+            <h2>
+              <i class="fa-solid fa-money-check-dollar"></i>
+              {{ totalPrice + 5 | currency }}
+            </h2>
+          </div>
+        </div>
+        <hr class="mb-0 text-warning">
+        <div class="card-body bg-transparent">
+          <form class="bg-transparent" [formGroup]="purchaseForm" method="post" role="form" >
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-4">
+              <!-- First Name input -->
+              <div class="col">
+                <div class="form-outline mt-3">
+                  <label class="form-label text-white" for="form6Example1">Vorname</label>
+                  <input formControlName="firstName" name="firstName"  type="text" id="form6Example1 " class="form-control bg-transparent text-white" />
+                </div>
+              </div>
+              <!-- Last Name input -->
+              <div class="col">
+                <div class="form-outline mt-3">
+                  <label class="form-label text-white" for="form6Example2">Familienname</label>
+                  <input formControlName="lastName" name="lastName" type="text" id="form6Example2" class="form-control bg-transparent text-white" />
+                </div>
+              </div>
+            </div>
+
+            <!-- address input -->
+            <div class="form-outline mb-4">
+              <label class="form-label text-white" for="form6Example4">Adresse</label>
+              <input formControlName="address"  name="address" type="text" id="form6Example4" class="form-control bg-transparent text-white" />
+            </div>
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <label class="form-label text-white" for="email">Email</label>
+              <input  formControlName="email"  placeholder="example@example.com"  name="email" type="email" id="email" class="form-control bg-transparent text-white" />
+            </div>
+            <!-- phone input -->
+            <div class="form-outline mb-4">
+              <label class="form-label text-white" for="phone">Telefon</label>
+              <input formControlName="phone" name="phone" type="text" id="phone" placeholder="Your Phone" class="form-control bg-transparent text-white" />
+            </div>
+            <hr class="my-4" />
+            <div class="form-check">
+              <label class="form-check-label text-white" for="checkoutForm1">
+                <input class="form-check-input bg-transparent text-white" type="checkbox" value="" id="checkoutForm1" />
+                Die Lieferadresse entspricht meiner Rechnungsadresse
+              </label>
+            </div>
+            <div class="form-check mb-4">
+              <label class="form-check-label text-white" for="checkoutForm2">
+                <input class="form-check-input bg-transparent text-white" type="checkbox" value="" id="checkoutForm2" checked />
+                Bewahren Sie diese Informationen für das nächste Mal auf
+              </label>
+            </div>
+
+            <!-- Payment -->
+            <h2 class="mb-4 text-warning">Zahlung</h2>
+            <hr class="mb-0 text-warning">
+            <div class="payment mt-5 mb-4 ">
+              <div class="form-check">
+                <input class="form-check-input bg-transparent" type="radio" name="flexRadioDefault" id="checkoutForm3"
+                  checked />
+                <label class="form-check-label text-white" for="checkoutForm3">
+                  <i class="fa-solid fa-credit-card"></i>
+                  Kreditkarte
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input bg-transparent" type="radio" name="flexRadioDefault" id="checkoutForm4" />
+                <label class="form-check-label text-white" for="checkoutForm4">
+                  <i class="fa-brands fa-cc-mastercard"></i>
+                  Master-Karte
+                </label>
+              </div>
+              <div class="form-check ">
+                <input class="form-check-input bg-transparent" type="radio" name="flexRadioDefault" id="checkoutForm5" />
+                <label class="form-check-label text-white" for="checkoutForm5">
+                  <i class="fa-brands fa-paypal"></i>
+                  Paypal
+                </label>
+              </div>
+            </div>
+
+            <div class="row mb-4">
+              <div class="col">
+                <div class="form-outline">
+                  <label class="form-label text-white" for="formCardNumber">Kartennummer</label>
+                  <input formControlName="cardNumber" name="cardNumber" type="text" id="formCardNumber" class="form-control bg-transparent text-white" placeholder="0123XXXXXXXXXXXX" />
+                </div>
+              </div>
+            </div>
+
+                <div class="form-outline">
+                  <label class="form-label text-white" for="formExpiration">Verfallsdatum</label>
+                  <input formControlName="expiration" name="expiration" type="text" id="formExpiration" class="form-control bg-transparent text-white" placeholder="MM/YY" />
+                </div>
+
+                <div class="form-outline mt-3 mb-3">
+                  <label class="form-label text-white" for="formCVV">CVV</label>
+                  <input formControlName="cvv" name="cvv" type="text" id="formCVV" class="form-control bg-transparent text-white" placeholder="123" />
+                </div>
+
+                <button [disabled]="purchaseForm.invalid" class="btn btn-outline-warning btn-lg btn-block" type="submit" (click)="track()">
+                  Jetzt kaufen!
+                </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

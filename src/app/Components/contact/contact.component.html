@@ -1,0 +1,80 @@
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+    <div class="row mt-5">
+      <div class="col-lg-4 mt-5">
+        <div class="info">
+          <div class="address">
+            <i class="fa-solid fa-location-dot"></i>
+            <h4 class="text-success">Standort:</h4>
+            <p>Johann-wilhelm-klein-straße 72</p>
+          </div>
+
+          <div class="open-hours">
+            <i class="fa-solid fa-clock"></i>
+            <h4 class="text-success">Öffnungszeiten:</h4>
+            <p>
+              Mon - Sa: <br>
+              11:00 - 23:00 Uhr
+            </p>
+          </div>
+
+          <div class="email">
+            <i class="fa-solid fa-envelope"></i>
+            <h4 class="text-success">Email:</h4>
+            <p>mustafahazem018@gmail.com</p>
+          </div>
+
+          <div class="phone">
+            <i class="fa-solid fa-phone-volume"></i>
+            <h4 class="text-success">Anruf:</h4>
+            <p>+43665 67009283</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8 bg-transparent border-0 mt-5">
+        <form [formGroup]="contact" (ngSubmit)="submitForm()" method="post" role="form" class="php-email-form bg-transparent">
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <input formControlName="name" type="text" name="name" class="form-control bg-transparent text-white" id="name" placeholder="Ihr Name">
+            </div>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+              <input formControlName="email" type="email" class="form-control bg-transparent text-white" name="email" id="email" placeholder="Ihre E-Mail">
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <input formControlName="subject" type="text" class="form-control bg-transparent text-white" name="subject" id="subject" placeholder="Thema">
+          </div>
+          <div class="form-group mt-3">
+            <textarea formControlName="msg" class="form-control bg-transparent text-white" name="message" rows="8" placeholder="Nachricht"></textarea>
+          </div>
+          <div class="text-center mt-5 mb-5">
+            <button [disabled]="contact.invalid" class="btn btn-outline-warning" type="submit">Nachricht senden</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="container mt-5" data-aos="fade-up">
+        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d11091.239275057607!2d14.31158717190454!3d48.336503857516675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x477398451bc34b65%3A0x618b128a2715ca24!2sJohann-Wilhelm-Klein-Stra%C3%9Fe%2072%2C%204040%20Linz!3m2!1d48.3364722!2d14.3128923!4m5!1s0x477398451bc34b65%3A0x618b128a2715ca24!2sJohann-Wilhelm-Klein-Stra%C3%9Fe%2072%2C%204040%20Linz!3m2!1d48.3364722!2d14.3128923!5e0!3m2!1sen!2sus!4v1641016236757!5m2!1sen!2sus" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Contact Section -->
+
+<!-- Start Contacts -->
+<section class="contacts text-center" id="Contacts">
+  <h2 class="title">Lass uns zusammen arbeiten!</h2>
+  <h3 class="name mt-5">Hazem Mostafa</h3>
+  <h5 class="name">Frontend entwickler</h5>
+  <div class="content">
+    <div class="info info-img mt-5 mb-5">
+      <!-- Start card 1 contact -->
+      <!-- <img src="../../../assets/Images/me.jpg" width="80%" height="80%" alt=""> -->
+      <img class="rounded-circle photo shadow-4-strong" alt="avatar1" src="../../../assets/Images/me.jpg" width="80%" />
+    </div>
+    <!-- End card 1 contact -->
+  </div> <!-- End Content of Contacts -->
+</section>
+<!-- End Contacts -->

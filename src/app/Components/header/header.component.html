@@ -1,0 +1,117 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark hero_area">
+  <div class="container" id="my-fontcolor">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/home" >
+      <img src="favicon.ico" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse mx-3 " id="navbarSupportedContent"  >
+      <ul class="navbar-nav  me-auto mb-2 mb-lg-0 w-100 d-flex align-items-center">
+        <li class="nav-item" [ngClass]="{'full-width': isMobile}">
+            <a
+                class="nav-link "
+                routerLink="/home"
+                routerLinkActive="active-link"
+                [ngClass]="{
+                  'text-warning': isActive('/home'),
+                  'text-white': !isActive('/home')
+                }"(click)="closeNavbar()">
+                <i class="fa-solid fa-house  mx-1"></i>
+                Home
+            </a>
+        </li>
+        <li class="nav-item" [ngClass]="{'full-width': isMobile}">
+          <a
+                class="nav-link"
+                routerLink="/book"
+                routerLinkActive="active-link"
+                [ngClass]="{
+                  'text-warning': isActive('/book'),
+                  'text-white': !isActive('/book')
+                }"(click)="closeNavbar()">
+                <i class="fa-solid fa-utensils  mx-1"></i>
+                Reservieren
+          </a>
+        </li>
+        <li class="nav-item" [ngClass]="{'full-width': isMobile}">
+          <a
+            class="nav-link"
+            routerLink="/contact"
+            routerLinkActive="active-link"
+            [ngClass]="{
+              'text-warning': isActive('/contact'),
+              'text-white': !isActive('/contact')
+            }"(click)="closeNavbar()">
+            <i class="fa-solid fa-message mx-1"></i>
+            Kontaktieren uns
+            </a>
+        </li>
+        <li class="nav-item" [ngClass]="{'full-width': isMobile}">
+          <a class="nav-link text-white" routerLink="/cart"[ngClass]="{
+              'text-warning': isActive('/cart'),
+              'text-white': !isActive('/cart')
+            }"
+            (click)="closeNavbar()">
+            <i class="fa-solid fa-cart-shopping  mx-1"></i>
+            Wagen <span [hidden]="length == 0" style="color: #1ab394;">{{length}}</span>
+          </a>
+        </li>
+
+        <li class="nav-item dropdown" [ngClass]="{'full-width': isMobile}">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+            Konto
+          </a>
+          <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item text-warning"  routerLink="/user/profile"(click)="closeNavbar()">
+                <i class="fa-solid fa-user mx-1"></i>
+                Profil
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item text-warning" routerLink="/user/setting"(click)="closeNavbar()">
+                  <i class="fa-solid fa-gear mx-1"></i>
+                  Einstellung
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item text-warning"
+              routerLink="/user"(click)="closeNavbar()">
+                <i class="fa-solid fa-truck-fast mx-1"></i>
+                Bestellungen
+              </a>
+            </li>
+            <li><hr class="dropdown-divider bg-white"></li>
+            <li class="sign-out">
+              <button type="button" class="dropdown-item text-center btn btn-outline-warning w-100"(click)="logout()"
+                  data-toggle="modal"
+                  data-target="modalID"
+                  [hidden]="!userStatus"
+                >
+                  Abmelden
+              </button>
+
+              <button
+                  type="button"
+                  class="dropdown-item text-center btn btn-outline-warning"
+                  (click)="openPopup()"
+                  data-toggle="modal"
+                  data-target="modalID"
+                  [hidden]="userStatus"
+                >
+                  Anmeldung
+              </button>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-warning" type="submit">Suchen</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<app-popup #popupComp></app-popup>

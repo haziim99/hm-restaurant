@@ -1,0 +1,46 @@
+    <section id="book-a-table" class="book-a-table">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title pt-5 text-warning mt-5">
+          <h2>Reservierung</h2>
+          <p>Einen Tisch reservieren</p>
+        </div>
+
+        <form [formGroup]="bookTable" method="post" role="form" class="php-email-form mt-5" data-aos="fade-up" data-aos-delay="100">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 form-group">
+              <input formControlName="name" type="text" name="name" class="form-control bg-transparent text-white" id="name" placeholder="Ihr Name">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+              <input formControlName="email" type="email" class="form-control bg-transparent text-white" name="email" id="email" placeholder="Ihre E-Mail" data-rule="email" data-msg="Please enter a valid email">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+              <input formControlName="phone" type="text" class="form-control bg-transparent text-white" name="phone" id="phone" placeholder="Ihre Telefonnummer">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3">
+              <input formControlName="date" type="date" name="date" class="form-control bg-transparent text-white" id="date" placeholder="Datum">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3">
+              <input formControlName="time" type="time" class="form-control bg-transparent text-white" name="time" id="time" placeholder="Zeit">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3">
+              <input formControlName="people" type="number" class="form-control bg-transparent text-white" name="people" id="people" placeholder="Leuten" >
+              <div class="validate"></div>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <textarea formControlName="msg" class="form-control bg-transparent text-white" name="message" rows="5" placeholder="Nachricht"></textarea>
+          </div>
+          <div class="text-center mb-5">
+            <button [disabled]="bookTable.invalid" class="btn btn-outline-warning" (click)="book()" type="reset">Einen Tisch reservieren</button>
+          </div>
+        </form>
+
+      </div>
+    </section>
+    <!-- End Book A Table Section -->
